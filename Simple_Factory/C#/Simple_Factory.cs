@@ -1,18 +1,20 @@
+using System;
+
 public class Operation
 {
-        private double _numberA = 0;
-        private double _numberB = 0;
+        private double _NumberA = 0;
+        private double _NumberB = 0;
 
         public double NumberA
         {
-                get {   return _numberA;        }
-                set {   _numberA = value;       }
+                get {   return _NumberA;        }
+                set {   _NumberA = value;       }
         }
         
         public double NumberB
         {
-                get {   return _numberB;        }
-                set {   _numberB = value;       }
+                get {   return _NumberB;        }
+                set {   _NumberB = value;       }
         }
         
         public virtual double GetResult()
@@ -26,7 +28,7 @@ class OperationAdd : Operation
 {
         public override double GetResult()
         {
-                return numberA + numberB;
+                return NumberA + NumberB;
         }
 }
 
@@ -34,7 +36,7 @@ class OperationSub : Operation
 {
         public override double GetResult()
         {
-                return numberA - numberB;
+                return NumberA - NumberB;
         }
 }
 
@@ -42,7 +44,7 @@ class OperationMul : Operation
 {
         public override double GetResult()
         {
-                return numberA * numberB;
+                return NumberA * NumberB;
         }
 }
 
@@ -50,11 +52,11 @@ class OperationDiv: Operation
 {
         public override double GetResult()
         {
-                if (numberB == 0)
+                if (NumberB == 0)
                 {
                         throw new Exception("除数不能为0。");
                 }
-                return numberA / numberB;
+                return NumberA / NumberB;
         }
 }
 
@@ -66,13 +68,13 @@ public class OperationFactory
                 if (operate == "+"){
                         oper = new OperationAdd();
                 }
-                else if (operation == "-"){
+                else if (operate == "-"){
                         oper = new OperationSub();
                 }
-                else if (operation == "*"){
+                else if (operate == "*"){
                         oper = new OperationMul();
                 }
-                else if (operation == "/"){
+                else if (operate == "/"){
                         oper = new OperationDiv();
                 }
 
@@ -80,10 +82,21 @@ public class OperationFactory
         }
 }
 
-static void Main (string[] args){
+// static void Main (string[] args){
+//         Operation oper;
+//         oper = OperationFactory.createOperate("+");
+//         oper.NumberA = 1;
+//         oper.NumberB = 2;
+//         double result = oper.GetResult();
+// }
+
+public class Class1{
+    public static void Main (string[] args){
         Operation oper;
         oper = OperationFactory.createOperate("+");
         oper.NumberA = 1;
         oper.NumberB = 2;
         double result = oper.GetResult();
+        Console.WriteLine("args1: {0}", result);
+    }
 }
